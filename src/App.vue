@@ -69,6 +69,10 @@
       </select>
       <p>{{eventData.location}}</p>
     </div>
+    <!--コンポーネントにv-model-->
+    <div>
+      <EventTitle v-model="eventData.title"></EventTitle>
+    </div>
   </div>
 </template>
 
@@ -78,6 +82,7 @@ import LikeHeaderSlots from './components/LikeHeaderSlots.vue'
 import LikeHeaderSlotProps from './components/LikeHeaderSlotProps.vue'
 import Home from './components/Home.vue'
 import About from './components/About.vue'
+import EventTitle from './components/EventTitle.vue'
 
 export default {
   data(){
@@ -102,7 +107,8 @@ export default {
     LikeHeaderSlots,
     LikeHeaderSlotProps,
     Home,
-    About
+    About,
+    EventTitle
   },
   methods:{
     incrementNumber(value){

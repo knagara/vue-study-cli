@@ -19,8 +19,16 @@
       <h2>{{slotProps.foo.firstName}}</h2>
       <p>デフォルトスロットしかない場合にしか使えないので注意</p>
     </LikeHeaderSlotProps>
+    
     <LikeNumber :totalNumber="number" @my-click="incrementNumber"></LikeNumber>
     <LikeNumber :totalNumber="number" testProps="テスト"></LikeNumber>
+
+    <!--動的コンポーネント-->
+    <button @click="currentComponent = 'Home'">Home</button>
+    <button @click="currentComponent = 'About'">About</button>
+    <keep-alive>
+      <component :is="currentComponent"></component>
+    </keep-alive>
   </div>
 </template>
 
@@ -28,17 +36,22 @@
 import LikeHeader from './components/LikeHeader.vue'
 import LikeHeaderSlots from './components/LikeHeaderSlots.vue'
 import LikeHeaderSlotProps from './components/LikeHeaderSlotProps.vue'
+import Home from './components/Home.vue'
+import About from './components/About.vue'
 
 export default {
   data(){
     return {
-      number: 10
+      number: 10,
+      currentComponent: 'Home'
     }
   },
   components:{
     LikeHeader,
     LikeHeaderSlots,
-    LikeHeaderSlotProps
+    LikeHeaderSlotProps,
+    Home,
+    About
   },
   methods:{
     incrementNumber(value){
